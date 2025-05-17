@@ -19,7 +19,7 @@ import { useCustomToolStore } from "../../../store/custom-tool-store";
 import { Header } from "./Header";
 import { OutputForIndex } from "./OutputForIndex";
 import { PromptOutput } from "./PromptOutput";
-import { TABLE_ENFORCE_TYPE, RECORD_ENFORCE_TYPE } from "./constants";
+import { TABLE } from "./constants";
 
 let TableExtractionSettingsBtn;
 try {
@@ -269,14 +269,12 @@ function PromptCardItems({
                         )}
                     </Space>
                     <Space>
-                      {(enforceType === TABLE_ENFORCE_TYPE ||
-                        enforceType === RECORD_ENFORCE_TYPE) &&
-                        TableExtractionSettingsBtn && (
-                          <TableExtractionSettingsBtn
-                            promptId={promptDetails?.prompt_id}
-                            enforceType={enforceType}
-                          />
-                        )}
+                      {enforceType === TABLE && TableExtractionSettingsBtn && (
+                        <TableExtractionSettingsBtn
+                          promptId={promptDetails?.prompt_id}
+                          enforceType={enforceType}
+                        />
+                      )}
                       <Select
                         className="prompt-card-select-type"
                         size="small"
